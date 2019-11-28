@@ -52,13 +52,20 @@
                     <div class="col-md-4">
                         {% render_field form.kuda|add_class:'form-control'   %}
                         </div>
-                    {% if calculate.price != None %}
+                    {% for foo in calculator %}
+
+
+
+
+
                          <div class="col-md-6 text-center">
-                         <div class="col-md-9"><p class="h4"><strong>Цена трансфера: {{ calculate.price }}</strong></p></div>
+                         <div class="col-md-9"><p class="h4"><strong>Цена трансфера: {{ foo.price }}</strong></p></div>
+                    </div>
+                    {% endfor %}
 
 
-                        </div>
-                    {% endif %}
+
+
                 <div class="col-md-6 text-center" style="margin-top: 30px;">
 
                     <button type="submit" class="btn btn-warning"> Рассчитать</button>
