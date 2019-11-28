@@ -1,0 +1,87 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block title %}
+    Контакты
+{% endblock %}
+{% block content %}
+<div id="wrapper">
+
+
+	<section id="content">
+
+	<div class="container">
+		<div class="row">
+            <div class="text-center">
+{#                <h2>Свяжитесь с нами</h2>   #}
+            </div>
+                    </div>
+	<div class="row">
+        <div class="col-md-4">
+            <ul>
+                <li>
+                    <div  style="margin-top:30px;">
+                    <span><img class="size_svg" src="/static/img/svg/phone-solid.svg" alt=""><strong> Телефон:</strong> +(349) 999 99 99</span><br>
+                     <span> +(349) 999 99 88</span>
+                    </div>
+                </li>
+                <li>
+                    <div  style="margin-top:20px;">
+                    <span><img class="size_svg" src="/static/img/svg/viber-brands.svg" alt=""><strong> Viber:</strong> +(349) 999 99 99</span><br>
+
+                    </div>
+                </li>
+                <li>
+                    <div style="margin-top:20px;">
+                    <span><img class="size_svg" src="/static/img/svg/whatsapp-brands.svg" alt=""><strong> Whatsapp:</strong> +(349) 999 99 99</span><br>
+
+                    </div>
+                </li>
+                <li>
+                    <div  style="margin-top:20px;">
+                    <span><img class="size_svg" src="/static/img/svg/envelope-open-solid.svg" alt=""><strong> Email:</strong> Email@site.com</span><br>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+								<div class="col-md-8">
+									<p> </p>
+
+		   <!-- Form itself -->
+
+          <form name="sentMessage" id="contactForm" method="post">
+              {% csrf_token %}
+             <div class="input-field">
+                 {% render_field form.name|add_class:'form-control input-lg' id="name" type="text" name="name"%}
+                           <label for="name" class="">   Name </label>
+                  <p class="help-block"></p>
+
+                 </div>
+                    <div class="input-field">
+
+                    {% render_field form.email|add_class:'form-control input-lg' type="email" class="form-control" id="email"%}
+
+                           <label for="name" class="">   Email </label>
+            </div>
+
+                   <div class="input-field">
+
+                       {% render_field  form.message|add_class:'form-control materialize-textarea'%}
+                             <label for="name" class="">   Message </label>
+              </div>
+             <div id="success"> </div> <!-- For success/fail messages -->
+            <button type="submit" class="btn btn-primary waves-effect waves-dark pull-right">Send</button><br />
+          </form>
+								</div>
+
+							</div>
+	</div>
+
+        <div class="prefootercontact"></div>
+	</section>
+
+</div>
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+{% endblock %}

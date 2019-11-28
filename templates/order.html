@@ -1,0 +1,102 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+
+{% load widget_tweaks %}
+{% block title %}Order{% endblock %}
+{% block content %}
+<div id="wrapper"> 
+
+
+	<section id="content">
+<section id="pricing">
+    <div class="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 borders" style="padding-top: 40px;padding-bottom: 40px;">
+        <form method="POST" class="post-form">
+
+                    {% csrf_token %}
+
+                        <div class="wrap-input100 validate-input col-md-8" data-validate="" >
+                                 <p><strong>Пункт отправления</strong></p>
+                                     <div class="form-group">
+                                    {% render_field form.otkuda|add_class:'form-control'   %}
+                                     </div>
+                                 <p><strong>Пункт назначения</strong></p>
+                                     <div class="form-group">
+                                    {% render_field form.kuda|add_class:'form-control '   %}
+                                     </div>
+                                 <p><strong>Дата поездки</strong></p>
+                                    <div class="form-group">
+                                        {% render_field  form.data|add_class:'form-control' type="date"%}
+                                    </div>
+                                <p><strong>Время подачи авто</strong></p>
+                            {% if form.hours.errors %}
+                                <p style="color: red">Введите время в формате ЧЧ:ММ</p>
+                            {% endif %}
+                                    <div class="form-group">
+                                    {% render_field  form.hours|add_class:'form-control'%}
+                                    </div>
+
+                                 <div class="form-group col-md-6">
+                                      <p><strong>Количество пасажиров</strong></p>
+                                    {% render_field form.kolichestvo|add_class:'form-control'%}
+
+
+                                 </div>
+                                <div class="form-group col-md-6">
+                                     <p><strong>С них детей и их возраст </strong></p>
+                                    {% render_field form.detey|add_class:'form-control'%}
+                                </div>
+
+                                <p><strong class="text-center">Имя </strong></p>
+                                    {% render_field form.name|add_class:'form-control input-lg'  %}
+
+                                <p><strong class="text-center">Фамилия </strong></p>
+                                    {% render_field form.lastname|add_class:'form-control input-lg'  %}
+
+
+
+
+
+
+
+                                <p><strong>Контактный телефон</strong></p>
+                                {% render_field form.phone|add_class:'form-control input-lg'%}
+
+
+
+                                 <p><strong>Адресс электронной почты</strong></p>
+                                 {% render_field form.email|add_class:'form-control input-lg'   %}
+
+
+{#                                 <p><strong>Подробное описание</strong></p>#}
+{#                                 {% render_field form.description|add_class:'form-control materialize-textarea'  %}#}
+{##}
+
+
+
+                        <div class="col-md-12 text-center ">
+                            <button type="submit" class="btn btn-warning">Заказать</button>
+                        </div>
+                        </div>
+                </form>
+            </div>
+        <div class="col-md-2"> </div>
+            </div>
+
+    </section>
+	</section>
+
+
+
+
+
+<div class="prefooter"></div>
+</div>
+
+
+
+
+
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+
+{% block content %}
+<div id="wrapper"> 
+
+	<section id="content">
+		<div class="container content">
+        <div class="text-center">
+            <p class="h2">Экскурсии по Испании </p>
+        </div>
+        <div class="col-md-12" style="margin-top: 40px;">
+       {% for item in object_list %}
+            <div class="col-md-4 text-center">
+                <img src="/media/{{ item.img }}" alt="" style="width: 290px;height: 250px;">
+                <p><strong>{{ item.name }}</strong></p>
+                <p>{{ item.description }}</p>
+            </div>
+       {% endfor %}
+        </div>
+        <div class="text-center">
+
+         <p class="h2">Заказать</p>
+            <a href="#">
+                <button class="btn btn-warning" style="background-color: green;border-color: green">
+                    WhatsApp
+                <img style="height: 17px;width: 17px;" src="/static/img/svg/whatsapp-brands.svg" alt="">
+                </button>
+            </a>
+            <a href="#">
+                <button class="btn btn-warning" style="background-color: purple;border-color: purple">
+                    Viber
+                <img style="height: 17px;width: 17px;" src="/static/img/svg/viber-brands.svg" alt="">
+                </button>
+            </a>
+
+
+        </div>
+    </div>
+    </section>
+
+</div>
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% block content %}
+
+
+<div id="wrapper" class="home-page"> 
+
+	<!-- end header -->
+	<section id="banner">
+	 
+	<!-- Slider -->
+        <div id="main-slider" class="flexslider">
+            <ul class="slides">
+              <li>
+                <img src="/static/img/slides/3.jpg" alt="" />
+                <div class="flex-caption">
+                    <h3 style="font-size: 50px">Трансфер по Испании</h3>
+					<p>Свяжитесь с нами прямо сейчас</p>
+					 
+                </div>
+              </li>
+              <li>
+                <img src="/static/img/slides/4.jpg" alt="" />
+                <div class="flex-caption">
+                    <h3 style="font-size: 50px">Трансфер по Испании</h3>
+					<p>Свяжитесь с нами прямо сейчас</p>
+					 
+                </div>
+              </li>
+            </ul>
+        </div>
+	<!-- end slider --> 
+	</section>  
+
+	<div class="container">
+	
+		<section class="services">
+	    	<div class="row">
+			<div class="col-md-12">
+				<div class="aligncenter"><p class="h2 aligncenter">Посчитать цену трансфера</p></div>
+				<br/>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="col-md-4">
+                        {% render_field form.start|add_class:'form-control'   %}
+                        </div>
+                    <div class="col-md-4">
+                        {% render_field form.type_car|add_class:'form-control'   %}
+                        </div>
+                    <div class="col-md-4">
+                        {% render_field form.kuda|add_class:'form-control'   %}
+                        </div>
+                    {% if calculate.price != None %}
+                         <div class="col-md-6 text-center">
+                         <div class="col-md-9"><p class="h4"><strong>Цена трансфера: {{ calculate.price }}</strong></p></div>
+
+
+                        </div>
+                    {% endif %}
+                <div class="col-md-6 text-center" style="margin-top: 30px;">
+
+                    <button type="submit" class="btn btn-warning"> Рассчитать</button>
+                </div>
+                </form>
+			</div>
+		</div>
+
+
+        </section>
+    </div>
+
+ 
+
+</div>
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+
+
+{% endblock %}

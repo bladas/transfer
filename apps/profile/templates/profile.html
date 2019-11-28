@@ -1,0 +1,104 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+{% block content %}
+{% if  user.is_superuser %}
+    <section id="content">
+        <div class="container">
+            <div class="text-center">
+            <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#panel1">Заказы</a></li>
+  <li><a data-toggle="tab" href="#panel2">История</a></li>
+
+</ul>
+
+<div class="tab-content">
+  <div id="panel1" class="tab-pane fade in active">
+    <p class="h2" >Заказы</p>
+                    {% for object in OrderFalse %}
+                        <div class="col-md-12" >
+                            <div class="myborder">
+                                <div class="col-md-8" style="margin-top: 20px;">
+                                    <p><strong>Имя: </strong>{{ object.name }}</p>
+                                    <p><strong>Фамилия: </strong>{{ object.lastname }}</p>
+                                    <p><strong>Пункт отправления: </strong>{{ object.otkuda }}</p>
+                                    <p><strong>Пункт назначения: </strong>{{ object.kuda }}</p>
+                                    <p><strong>Дата поездки: </strong>{{ object.data }}</p>
+                                    <p><strong>Времья подачи авто: </strong>{{ object.hours }}</p>
+                                    <p><strong>Количество пасажиров: </strong>{{ object.kolichestvo }}</p>
+                                    <p><strong>С них детей и их возраст: </strong>{{ object.detey }}</p>
+                                    <p><strong>Контактный телефон: </strong>{{ object.phone }}</p>
+                                    <p> <strong>Электронная почта: </strong>{{ object.email }}</p>
+                                </div>
+
+                                <div class="col-md-1" style="padding-top: 80px;">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                    <input type="hidden" name="order_id" value="{{ object.pk }}">
+                                        <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="materialUnchecked{{ object.pk }}" name="materialExampleRadios" value="1">
+                                      <label class="form-check-label" for="materialUnchecked{{ object.pk }}">Принять</label>
+                                    </div>
+
+                                    <!-- Material checked -->
+                                    <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="materialChecked{{ object.pk }}" name="materialExampleRadios" value="2">
+                                      <label class="form-check-label" for="materialChecked{{ object.pk }}">Отклонить</label>
+                                    </div>
+
+                                    <div><button type="submit" class="btn btn-warning">Отправить</button></div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+  </div>
+  <div id="panel2" class="tab-pane fade">
+    <p class="h2" >История</p>
+        {% for object in OrderTrue %}
+                        <div class="col-md-12" >
+                            <div class="myborder" >
+
+                                    <p><strong>Имя: </strong>{{ object.name }}</p>
+                                    <p><strong>Фамилия: </strong>{{ object.lastname }}</p>
+                                    <p><strong>Пункт отправления: </strong>{{ object.otkuda }}</p>
+                                    <p><strong>Пункт назначения: </strong>{{ object.kuda }}</p>
+                                    <p><strong>Дата поездки: </strong>{{ object.data }}</p>
+                                    <p><strong>Времья подачи авто: </strong>{{ object.hours }}</p>
+                                    <p><strong>Количество пасажиров: </strong>{{ object.kolichestvo }}</p>
+                                    <p><strong>С них детей и их возраст: </strong>{{ object.detey }}</p>
+                                    <p><strong>Контактный телефон: </strong>{{ object.phone }}</p>
+                                    <p> <strong>Электронная почта: </strong>{{ object.email }}</p>
+                                    {% if object.flag != None %}
+                                        <p> <strong>{{ object.flag }}</strong></p>
+                                    {% endif %}
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+  </div>
+</div>
+
+
+                </div>
+
+
+        </div>
+    </section>
+{% else %}
+    <section id="content">
+        <div class="container">
+            <div class="text-center">
+                <h2>Информация недоступна с вашим типом аккаунта</h2>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% endblock %}
