@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cacce0e0-9f5a-424e-8b47-7f3b8433bc4c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/home/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/home/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/private_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/private_settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,53 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/home/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/home/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/home/views.py">
+        <entry file="file://$PROJECT_DIR$/private_settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/profile/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="52" column="71" lean-forward="true" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -119,6 +74,7 @@
       <find>social-ne</find>
       <find>social-network</find>
       <find>materialUnchecked</find>
+      <find>scrollup</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -130,8 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apps/pricing/forms.py" />
-        <option value="$PROJECT_DIR$/apps/contact/admin.py" />
         <option value="$PROJECT_DIR$/apps/contact/forms.py" />
         <option value="$PROJECT_DIR$/apps/contact/views.py" />
         <option value="$PROJECT_DIR$/apps/contact/urls.py" />
@@ -162,7 +116,6 @@
         <option value="$PROJECT_DIR$/apps/services/views.py" />
         <option value="$PROJECT_DIR$/apps/services/admin.py" />
         <option value="$PROJECT_DIR$/apps/services/models.py" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/base_full_admin.html" />
         <option value="$PROJECT_DIR$/apps/home/admins.py" />
         <option value="$PROJECT_DIR$/templates/order.html" />
@@ -178,9 +131,12 @@
         <option value="$PROJECT_DIR$/apps/home/forms.py" />
         <option value="$PROJECT_DIR$/apps/profile/templates/profile.html" />
         <option value="$PROJECT_DIR$/apps/home/admin.py" />
-        <option value="$PROJECT_DIR$/apps/home/views.py" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/apps/home/models.py" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/apps/home/views.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/private_settings.py" />
       </list>
     </option>
   </component>
@@ -207,17 +163,6 @@
               <item name="transfer" type="b2602c69:ProjectViewProjectNode" />
               <item name="transfer" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="transfer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="transfer" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="transfer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="transfer" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -324,33 +269,43 @@
       <workItem from="1574777227445" duration="8945000" />
       <workItem from="1574800092540" duration="3418000" />
       <workItem from="1574929299582" duration="1184000" />
-      <workItem from="1574966341638" duration="9940000" />
+      <workItem from="1574966341638" duration="11681000" />
+      <workItem from="1575046375967" duration="462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165724000" />
+    <option name="totallyTimeSpent" value="167927000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.27267876" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4976415" visible="true" weight="0.27588046" />
       <window_info id="Structure" order="1" sideWeight="0.5023585" side_tool="true" weight="0.2409396" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32795697" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34983853" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34983853" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39892474" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32938644" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938644" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32938644" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34553283" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32795697" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3451613" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32723358" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="TypeScript" order="14" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -364,20 +319,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/new/Lib/site-packages/django/forms/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="442" column="8" selection-start-line="442" selection-start-column="8" selection-end-line="442" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/orders/templates/successfully.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/profile/view.py" />
     <entry file="file://$PROJECT_DIR$/templates/registration/logedout.html" />
     <entry file="file://$PROJECT_DIR$/templates/registration/logout.html" />
@@ -718,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/profile/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="52" column="71" lean-forward="true" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -752,10 +683,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/home/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="375">
+          <caret line="28" column="52" lean-forward="true" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/profile/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="52" column="71" lean-forward="true" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/private_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
