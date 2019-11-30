@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('name', 'lastname', 'phone', 'otkuda', 'kuda',
                   'kolichestvo',
-                  'data', 'description', 'email','hours','detey')
+                  'data', 'description', 'email','hours','minutes','detey','deteydescr')
 
     def save(self, commit=True):
         new_order = Order.objects.create(
@@ -21,8 +21,10 @@ class OrderForm(forms.ModelForm):
             kolichestvo=self.cleaned_data['kolichestvo'],
             data=self.cleaned_data['data'],
             hours=self.cleaned_data['hours'],
+            minutes=self.cleaned_data['minutes'],
             description=self.cleaned_data['description'],
             email=self.cleaned_data['email'],
-            detey=self.cleaned_data['detey']
+            detey=self.cleaned_data['detey'],
+            deteydescr=self.cleaned_data['deteydescr']
         )
         return new_order.save()

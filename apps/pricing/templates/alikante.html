@@ -1,0 +1,60 @@
+{% extends 'base_admin.html' %}
+{% load i18n %}
+
+{% block content %}
+<div id="wrapper"> 
+
+  <section id="content">
+        <section id="pricing">
+
+
+                        <div class="container">
+
+                                <div class="col-md-1"></div>
+                                    <div class="col-md-11 text-center">
+                                        <p class="h2"><strong>ТРАНСФЕР В АЭРОПОРТ АЛИКАНТЕ / ИЗ АЭРОПОРТА АЛИКАНТЕ</strong></p>
+                                        <br>
+                                        <table  class="table table-hover">
+                                                  <thead>
+                                                    <tr>
+                                                      <th scope="col">Название пункта <br> назначения</th>
+                                                      <th scope="col">1-4 пассажира,<br>
+                                                            2-3 багажных места <br> (легковой  автомобиль)
+                                                        </th>
+                                                      <th scope="col">5-6 пассажиров, <br>
+                                                        4-5 багажных мест <br> (минивэн)
+                                                        </th>
+                                                      <th scope="col">7-8 пассажиров,<br>
+                                                        6-8 багажных мест <br> (микроавтобус)
+                                                      </th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                  {% for item in alikante %}
+
+
+
+                                                    <tr>
+                                                      <th scope="row">{{ item.name }}/ <br>
+                                                        {{ item.ispanename }}
+                                                        </th>
+                                                  <td>{{ item.pricelehkovoy }}</td>
+                                                  <td>{{ item.priceminiven }}</td>
+                                                  <td>{{ item.pricemikroavto }}</td>
+                                                </tr>
+                                      {% endfor %}
+                                     </tbody>
+                                    </table>
+                                                                            <a href="{% url 'orders:orders' %}"><button class="btn btn-warning">Заказать</button></a>
+
+                                    </div>
+                        </div>
+
+
+
+        </section>
+  </section>
+
+</div>
+<a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+{% endblock %}

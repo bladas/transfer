@@ -2,97 +2,110 @@
 {% load i18n %}
 
 {% block content %}
-<div id="wrapper"> 
+<div id="wrapper" style="padding-bottom: 130px;">
 
   <section id="content">
         <section id="pricing">
 
 
                         <div class="container">
-
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10 text-center">
-                        <ul  class="nav nav-tabs">
-                          <li style="margin-left: 80px;" class="active"><p class="h4"><strong><a data-toggle="tab" href="#panel1">ТРАНСФЕР В АЭРОПОРТ АЛИКАНТЕ<br> ИЗ АЭРОПОРТА АЛИКАНТЕ</a></strong></p></li>
-                            <li style="margin-left: 50px;"><p class="h4"><strong><a data-toggle="tab" href="#panel2">ТРАНСФЕР В АЭРОПОРТ ВАЛЕНСИИ<br> ИЗ АЭРОПОРТА ВАЛЕНСИИ</a></strong></p></li>
-
-                        </ul>
-                        <div class="tab-content">
-                            <div id="panel1" class="tab-pane fade in active">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Название пункта <br> назначения</th>
-                                      <th scope="col">1-4 пассажира,<br>
-                                            2-3 багажных места <br> (легковой  автомобиль)
-                                        </th>
-                                      <th scope="col">5-6 пассажиров, <br>
-                                        4-5 багажных мест <br> (минивэн)
-                                        </th>
-                                      <th scope="col">7-8 пассажиров,<br>
-                                        6-8 багажных мест <br> (микроавтобус)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                  {% for item in alikante %}
-
-
-
-                                    <tr>
-                                      <th scope="row">{{ item.name }}/ <br>
-                                        {{ item.ispanename }}
-                                        </th>
-                                      <td>{{ item.pricelehkovoy }}</td>
-                                      <td>{{ item.priceminiven }}</td>
-                                      <td>{{ item.pricemikroavto }}</td>
-                                    </tr>
-                                  {% endfor %}
-                                 </tbody>
-                                </table>
+                            <div class="text-center">
+                                <p class="h2"><strong>Посмотреть цены на трансфер</strong></p>
+                                <a href="{% url 'pricing:alikante' %}"><button class="btn btn-warning">Аликанте</button></a>
+                            <a href="{% url 'pricing:valencia' %}"><button class="btn btn-warning">Валенсия</button></a>
                             </div>
-                            <div id="panel2" class="tab-pane fade">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Название пункта <br> назначения</th>
-                                      <th scope="col">1-4 пассажира,<br>
-                                            2-3 багажных места <br> (легковой  автомобиль)
-                                        </th>
-                                      <th scope="col">5-6 пассажиров, <br>
-                                        4-5 багажных мест <br> (минивэн)
-                                        </th>
-                                      <th scope="col">7-8 пассажиров,<br>
-                                        6-8 багажных мест <br> (микроавтобус)
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                  {% for item in valensia %}
 
 
 
-                                    <tr>
-                                      <th scope="row">{{ item.name }}/ <br>
-                                        {{ item.ispanename }}
-                                        </th>
-                                      <td>{{ item.pricelehkovoy }}</td>
-                                      <td>{{ item.priceminiven }}</td>
-                                      <td>{{ item.pricemikroavto }}</td>
-                                    </tr>
-                                  {% endfor %}
-                                 </tbody>
-                                </table>
-                              </div>
+
+
+                            {#                        <div class="col-md-1"></div>#}
+{#                        <div class="col-md-10 text-center">#}
+{#                        <ul  class="nav nav-tabs"  style="margin-left: 20%;">#}
+{#                            <li ><a data-toggle="tab" href="#panel1"><p class="h4"><strong>Трансфер в Аликанте</strong></p></a></li>#}
+{#                            <li style=""><a data-toggle="tab" href="#panel2"><p class="h4"><strong>Трансфер в Валенсии</strong></p></a></li>#}
+{##}
+{#                        </ul>#}
+{#                        <div class="tab-content">#}
+{#                            <div id="panel1" class="tab-pane fade in active">#}
+{#                                <div class="text-center" style="margin-top: 15px;"><p><strong>ТРАНСФЕР В АЭРОПОРТ АЛИКАНТЕ / ИЗ АЭРОПОРТА АЛИКАНТЕ</strong></p></div>#}
+{#                                <br>#}
+{#                                <table class="table table-hover">#}
+{#                                  <thead>#}
+{#                                    <tr>#}
+{#                                      <th scope="col">Название пункта <br> назначения</th>#}
+{#                                      <th scope="col">1-4 пассажира,<br>#}
+{#                                            2-3 багажных места <br> (легковой  автомобиль)#}
+{#                                        </th>#}
+{#                                      <th scope="col">5-6 пассажиров, <br>#}
+{#                                        4-5 багажных мест <br> (минивэн)#}
+{#                                        </th>#}
+{#                                      <th scope="col">7-8 пассажиров,<br>#}
+{#                                        6-8 багажных мест <br> (микроавтобус)#}
+{#                                      </th>#}
+{#                                    </tr>#}
+{#                                  </thead>#}
+{#                                  <tbody>#}
+{#                                  {% for item in alikante %}#}
+{##}
+{##}
+{##}
+{#                                    <tr>#}
+{#                                      <th scope="row">{{ item.name }}/ <br>#}
+{#                                        {{ item.ispanename }}#}
+{#                                        </th>#}
+{#                                      <td>{{ item.pricelehkovoy }}</td>#}
+{#                                      <td>{{ item.priceminiven }}</td>#}
+{#                                      <td>{{ item.pricemikroavto }}</td>#}
+{#                                    </tr>#}
+{#                                  {% endfor %}#}
+{#                                 </tbody>#}
+{#                                </table>#}
+{#                            </div>#}
+{#                            <div id="panel2" class="tab-pane fade">#}
+{#                              <div class="text-center"  style="margin-top: 15px;"><p><strong>ТРАНСФЕР В АЭРОПОРТ ВАЛЕНСИИ / ИЗ АЭРОПОРТА ВАЛЕНСИИ</strong></p></div>#}
+{#                                <br>#}
+{#                                <table class="table table-hover">#}
+{#                                  <thead>#}
+{#                                    <tr>#}
+{#                                      <th scope="col">Название пункта <br> назначения</th>#}
+{#                                      <th scope="col">1-4 пассажира,<br>#}
+{#                                            2-3 багажных места <br> (легковой  автомобиль)#}
+{#                                        </th>#}
+{#                                      <th scope="col">5-6 пассажиров, <br>#}
+{#                                        4-5 багажных мест <br> (минивэн)#}
+{#                                        </th>#}
+{#                                      <th scope="col">7-8 пассажиров,<br>#}
+{#                                        6-8 багажных мест <br> (микроавтобус)#}
+{#                                      </th>#}
+{#                                    </tr>#}
+{#                                  </thead>#}
+{#                                  <tbody>#}
+{#                                  {% for item in valensia %}#}
+{##}
+{##}
+{##}
+{#                                    <tr>#}
+{#                                      <th scope="row">{{ item.name }}/ <br>#}
+{#                                        {{ item.ispanename }}#}
+{#                                        </th>#}
+{#                                      <td>{{ item.pricelehkovoy }}</td>#}
+{#                                      <td>{{ item.priceminiven }}</td>#}
+{#                                      <td>{{ item.pricemikroavto }}</td>#}
+{#                                    </tr>#}
+{#                                  {% endfor %}#}
+{#                                 </tbody>#}
+{#                                </table>#}
+{#                              </div>#}
+{#                        </div>#}
+{##}
+{#                       </div>#}
+{##}
                         </div>
 
-                       </div>
-
-                        </div>
 
 
-
-
+<div class="prefooterlogin"></div>
         </section>
   </section>
 

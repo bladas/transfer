@@ -25,34 +25,53 @@
                                      <div class="form-group">
                                     {% render_field form.kuda|add_class:'form-control '   %}
                                      </div>
-                                 <p><strong>Дата поездки</strong></p>
-                                    <div class="form-group">
+
+
+
+{#                            {% if form.hours.errors %}#}
+{#                                <p style="color: red">Введите время в формате ЧЧ:ММ</p>#}
+{#                            {% endif %}#}
+                                <div class="col-md-12">
+
+                                    <div class="form-group col-md-6" >
+                                         <p><strong>Дата поездки</strong></p>
                                         {% render_field  form.data|add_class:'form-control' type="date"%}
                                     </div>
-                                <p><strong>Время подачи авто</strong></p>
-                            {% if form.hours.errors %}
-                                <p style="color: red">Введите время в формате ЧЧ:ММ</p>
-                            {% endif %}
-                                    <div class="form-group">
+                                    <div class="form-group col-md-3">
+
+                                        <p><strong>Часы</strong></p>
                                     {% render_field  form.hours|add_class:'form-control'%}
                                     </div>
+                                    <div class="form-group col-md-3">
+                                        <p><strong>Минуты</strong></p>
+                                    {% render_field  form.minutes|add_class:'form-control'%}
+                                    </div>
 
-                                 <div class="form-group col-md-6">
-                                      <p><strong>Количество пасажиров</strong></p>
-                                    {% render_field form.kolichestvo|add_class:'form-control'%}
-
-
-                                 </div>
-                                <div class="form-group col-md-6">
-                                     <p><strong>С них детей и их возраст </strong></p>
-                                    {% render_field form.detey|add_class:'form-control'%}
                                 </div>
 
-                                <p><strong class="text-center">Имя </strong></p>
+                                <div class="col-md-12">
+
+                                    <div class="form-group col-md-5">
+                                <p><strong>Количество пасажиров</strong></p>
+
+                                    {% render_field form.kolichestvo|add_class:'form-control'%}
+                                    </div>
+
+
+                                <div class="form-group col-md-3">
+                                     <p><strong>С них детей </strong></p>
+                                    {% render_field form.detey|add_class:'form-control'%}
+                                </div>
+                                <div class="form-group col-md-4">
+                                     <p><strong>Возраст <br> детей</strong></p>
+                                    {% render_field form.deteydescr|add_class:'form-control'%}
+                                </div>
+                                </div>
+                                <p><strong class="text-center">Имя Фамилия</strong></p>
                                     {% render_field form.name|add_class:'form-control input-lg'  %}
 
-                                <p><strong class="text-center">Фамилия </strong></p>
-                                    {% render_field form.lastname|add_class:'form-control input-lg'  %}
+{#                                <p><strong class="text-center">Фамилия </strong></p>#}
+{#                                    {% render_field form.lastname|add_class:'form-control input-lg'  %}#}
 
 
 
@@ -69,9 +88,9 @@
                                  {% render_field form.email|add_class:'form-control input-lg'   %}
 
 
-{#                                 <p><strong>Подробное описание</strong></p>#}
-{#                                 {% render_field form.description|add_class:'form-control materialize-textarea'  %}#}
-{##}
+                                 <p><strong>Дополнительная информация</strong></p>
+                                 {% render_field form.description|add_class:'text-area'  %}
+                                    <p>Укажите пожалуйста номер вашего рейса , точный адрес отеля, дома, апартаментов, агенства недвижимости или иную информацию</p>
 
 
 
@@ -86,9 +105,6 @@
 
     </section>
 	</section>
-
-
-
 
 
 <div class="prefooter"></div>
