@@ -1,14 +1,106 @@
-{% extends 'base_admin.html' %}
-{% load i18n %}
+
 {% load widget_tweaks %}
-{% block content %}
 
 
-<div id="wrapper" class="home-page"> 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Главная</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- css -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/static/materialize/css/materialize.min.css" media="screen,projection" />
+<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/static/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="/static/css/flexslider.css" rel="stylesheet" />
+<link href="/static/css/style.css" rel="stylesheet" />
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div id="wrapper" class="home-page">
+	<header class="topbar" >
+		<div class="container">
+			<div class="row">
+				<!-- social icon-->
+				<div class="col-sm-3" >
+                    <ul class="social-network">
+					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-facebook"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-vk"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-instagram"></i></a></li>
+
+					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fab fa-viber"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
+
+				</ul>
+
+
+                    </div>
+				<div class="col-sm-9">
+
+
+                        <div class="row">
+                            <ul class="info">
+                                <li><i style="color:white;" class="icon-info-blocks material-icons">question_answer</i><span>site@gmail.com</span></li>
+                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(012) 345 6789</span></li>
+                            </ul>
+						<div class="clr"></div>
+					</div>
+					</div>
+
+				<!-- info -->
+
+			</div>
+		</div>
+	</header>
+
+
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'home:home' %}">LOGO</a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li ><a class="waves-effect waves-dark" href="{% url 'home:home' %}">Главная</a></li>
+
+                        <li><a class="waves-effect waves-dark" href="{% url 'pricing:pricing' %}">Трансфер и цены</a></li>
+                        <li><a class="waves-effect waves-dark" href="{% url 'orders:orders' %}">Сделать заказ</a></li>
+                        <li><a class="waves-effect waves-dark" href="{% url 'excursion:excursion' %}">Экскурсии</a></li>
+
+						<li><a class="waves-effect waves-dark" href="{% url 'services:services' %}">Дополнительные  услуги</a></li>
+
+
+                        <li><a class="waves-effect waves-dark" href="{% url 'contact:contact' %}">Контакты</a></li>
+                        {% if user.is_superuser %}
+                            <li><a class="waves-effect waves-dark" href="{% url 'profile:profile' %}">Админка</a></li>
+                            <li><a class="waves-effect waves-dark" href="{% url 'logout' %}">Выход</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+
+
+
 
 	<!-- end header -->
 	<section id="banner">
-	 
+
 	<!-- Slider -->
         <div id="main-slider" class="flexslider">
             <ul class="slides">
@@ -17,7 +109,7 @@
                 <div class="flex-caption">
                     <h1 style="font-size: 50px;color: whitesmoke" >Трансфер в Аликанте и Валенсии</h1>
 
-					 
+
                 </div>
               </li>
               <li>
@@ -25,52 +117,91 @@
                 <div class="flex-caption">
                     <h1 style="font-size: 50px;color: whitesmoke" >Трансфер в Аликанте и Валенсии</h1>
 
-					 
+
                 </div>
               </li>
             </ul>
         </div>
-	<!-- end slider --> 
-	</section>  
+	<!-- end slider -->
+	</section>
 
 	<div class="container">
-	
+
 		<section class="services">
 	    	<div class="row">
 			<div class="col-md-12">
 				<div class="aligncenter"><p class="h2 aligncenter">Рассчитать стоимость поездки</p></div>
 				<br/>
+            {% if suma == None %}
 
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="col-md-4">
-                        {% render_field form.start|add_class:'form-control'   %}
+
+                {% if start == None %}
+                    <div class="col-md-3"></div>
+                <div class="col-md-6">
+                <div class="text-center">Выберите начало трансфера</div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            {% render_field start_forms.start|add_class:'form-control'  title="Hello, world!" %}
                         </div>
-                    <div class="col-md-4">
-                        {% render_field form.type_car|add_class:'form-control'   %}
+                        <br>
+                        <div class="col-md-12 text-center" >
+                            <br>
+                            <button type="submit" class="btn btn-warning"> Применить </button>
+                            <br>
+                            <h3>{{ start }}</h3>
                         </div>
-                    <div class="col-md-4">
-                        {% render_field form.kuda|add_class:'form-control'   %}
-                        </div>
-                    {% for foo in calculator %}
-
-
-
-
-
-                         <div class="col-md-6 text-center">
-                         <div class="col-md-9"><p class="h4"><strong>Цена трансфера: {{ foo.price }}</strong></p></div>
-                    </div>
-                    {% endfor %}
-
-
-
-
-                <div class="col-md-6 text-center" style="margin-top: 30px;">
-
-                    <button type="submit" class="btn btn-warning"> Рассчитать</button>
+                    </form>
                 </div>
-                </form>
+            {% endif %}
+                {% if start != None  and kuda == None%}
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center">Выберите куда будете ехать</div>
+
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-12">
+                                {% render_field kuda_forms.kuda|add_class:'form-control'   %}
+                            </div>
+
+                            <div class="col-md-12 text-center" style="margin-top: 30px;">
+                                <button type="submit" class="btn btn-warning"> Применить </button>
+                                <br>
+                                <h3>{{ kuda }}</h3>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                 {% if start != None and kuda != None %}
+                <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center">Выберите тип транспорта</div>
+
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-12">
+                                {% render_field type_car_forms.type_car|add_class:'form-control'  %}
+                            </div>
+                            <div class="col-md-12 text-center" style="margin-top: 30px;">
+                                <button type="submit" class="btn btn-warning"> Расчитать </button>
+                                <br>
+                                <h3>{{ type_car }}</h3>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                {% else %}
+                <div class="col-md-12">
+                    <div class="text-center"><h2>Cтоимость трансфера - {{ suma }} </h2></div>
+                </div>
+
+            {% endif %}
+
+
+
+
+
 			</div>
 		</div>
 
@@ -78,10 +209,105 @@
         </section>
     </div>
 
- 
 
-</div>
+
+    <footer class="our_footer">
+
+
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+                <div class="widget">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                             <div class="col-md-6">
+                                <address>
+                                <strong>Name company</strong><br>
+                                Address
+                                </address>
+                             </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <i class="icon-phone"></i> +(349) 999 99 99 <br>
+                                    <i class="icon-envelope-alt"></i> admin@site.com
+                                 </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li><a class="waves-effect waves-dark" href="{% url 'home:home' %}">Главная</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li><a class="waves-effect waves-dark" href="{% url 'excursion:excursion' %}">Экскурсии</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'orders:orders' %}">Сделать Заказ</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'services:services' %}">Дополнительные услуги</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-1">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'pricing:pricing' %}">Цены</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-1">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    </ul>
+                            </div>
+
+
+
+
+                        </div>
+
+                </div>
+				</div>
+                <div class="col-lg-9"></div>
+				<div class="col-lg-3">
+					<div class="copyright">
+						<p>
+							<span>&copy; company name 2019 All right reserved</span>
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</footer>
+
+    </div>
+
 <a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
+</body>
+<script src="/static/js/jquery.js"></script>
 
+<script src="/static/js/jquery.easing.1.3.js"></script>
+<script src="/static/materialize/js/materialize.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.fancybox.pack.js"></script>
+<script src="/static/js/jquery.fancybox-media.js"></script>
+<script src="/static/js/jquery.flexslider.js"></script>
+<script src="/static/js/animate.js"></script>
+<!-- Vendor Scripts -->
+<script src="/static/js/modernizr.custom.js"></script>
+<script src="/static/js/jquery.isotope.min.js"></script>
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/animate.js"></script>
+<script src="/static/js/custom.js"></script>
 
-{% endblock %}
+        <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/v4-shims.js"></script>
+</html>
