@@ -1,6 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render, render_to_response
-from django.views.generic import ListView, FormView, UpdateView
+from django.shortcuts import redirect, render
+from django.views.generic import ListView, FormView
 
 from apps.orders.forms import OrderForm
 from apps.orders.models import Order

@@ -149,7 +149,7 @@
                             <br>
                             <button type="submit" class="btn btn-warning"> Применить </button>
                             <br>
-                            <h3>{{ start }}</h3>
+
                         </div>
                     </form>
                 </div>
@@ -168,7 +168,7 @@
                             <div class="col-md-12 text-center" style="margin-top: 30px;">
                                 <button type="submit" class="btn btn-warning"> Применить </button>
                                 <br>
-                                <h3>{{ kuda }}</h3>
+
                             </div>
                         </form>
                     </div>
@@ -184,16 +184,18 @@
                                 {% render_field type_car_forms.type_car|add_class:'form-control'  %}
                             </div>
                             <div class="col-md-12 text-center" style="margin-top: 30px;">
-                                <button type="submit" class="btn btn-warning"> Расчитать </button>
+                                <button type="submit" class="btn btn-warning"> Рассчитать </button>
                                 <br>
-                                <h3>{{ type_car }}</h3>
+
                             </div>
                         </form>
                     </div>
                 {% endif %}
                 {% else %}
                 <div class="col-md-12">
-                    <div class="text-center"><h2>Cтоимость трансфера - {{ suma }} </h2></div>
+                    <div class="text-center"><h2>Cтоимость трансфера:  {{ suma }} </h2></div>
+                    <div class="text-center"><p>*Стоимость трансфера не окончательная, она зависит от множества факторов </p></div>
+
                 </div>
 
             {% endif %}

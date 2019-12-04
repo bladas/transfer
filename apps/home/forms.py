@@ -42,5 +42,6 @@ class KudaForms(forms.ModelForm):
         if (start != None):
             el_start = Start.objects.filter(pk=int(start))[0]
         else:
-            el_start = Start.objects.filter(pk=int(1))[0]
+            start  = Start.objects.all().order_by('-id')[0]
+            el_start = Start.objects.filter(pk=int(start.id))[0]
         self.fields['kuda'].queryset = Space.objects.filter(start=el_start)

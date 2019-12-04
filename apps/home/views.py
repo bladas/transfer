@@ -16,7 +16,8 @@ class HomeView(FormView):
         context['starts'] = Start.objects.all()
         context['type_car_forms'] = TypeCarForms
         context['start_forms'] = StartForms
-        context['kuda_forms'] = KudaForms(start=1)
+        start_first_el  = Start.objects.all().order_by('-id')[0]
+        context['kuda_forms'] = KudaForms(start = int(start_first_el.id))
         return context
 
     def post(self, request, *args, **kwargs):
@@ -49,7 +50,9 @@ class HomeView(FormView):
 
         start_form = StartForms(request.POST)
         type_car_form = TypeCarForms(request.POST)
-        kuda_forms = KudaForms(data=request.POST, start=1)
+        start_first_el  = Start.objects.all().order_by('-id')[0]
+
+        kuda_forms = KudaForms(data=request.POST,start =int(start_first_el.id))
 
         if start_form.data.get('start') != None:
             if start is None:
@@ -83,8 +86,17 @@ class HomeView(FormView):
 
 
         if (request.session['start'] != None and request.session['kuda'] != None and request.session['type_car'] != None):
-            price_filter = OrderCalculates.objects.filter(start = start_form.data.get('start'),kuda = kuda_forms.data.get('kuda'),type_car = type_car_form.data.get('type_car') )
-            request.session['suma'] = price_filter
+
+            print("rez")
+            filt_start = Start.objects.filter(name=str(request.session['start']))[0]
+            filt_kuda = Space.objects.filter(name=str(request.session['kuda']))[0]
+            filt_type_car = TypeCar.objects.filter(name=str(request.session['type_car']))[0]
+
+
+            price_filter = OrderCalculates.objects.get(start_id=filt_start.id, kuda_id=filt_kuda.id, type_car_id=filt_type_car.id)
+
+            # price_filter = OrderCalculates.objects.filter(start =Start.objects.filter(name = start_form.data.get('start'))[0],kuda = Space.objects.filter(name = start_form.data.get('kuda'),start = Start.objects.filter(name = start_form.data.get('start'))[0])[0],type_car = TypeCar.objects.filter(name = start_form.data.get('type_car')))[0]
+            request.session['suma'] = price_filter.price
             context['suma'] = request.session['suma']
 
             request.session['start'] = None

@@ -33,19 +33,19 @@ from django.db import models
 #
 
 class Start(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.name )
 
 
 class Space(models.Model):
     start = models.ForeignKey(Start, on_delete=models.CASCADE)
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.name)+" - "+str(self.start)
 
 
 class TypeCar(models.Model):
@@ -79,4 +79,4 @@ class OrderCalculates(models.Model):
         return self.__dict__
 
     def __str__(self):
-        return str(self.pk) + ' ' + self.price
+        return str(self.start) + ' --- ' + str(self.kuda) + '  Цена - ' + str(self.price)
