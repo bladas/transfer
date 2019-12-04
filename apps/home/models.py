@@ -45,7 +45,7 @@ class Space(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.name)+" - "+str(self.start)
 
 
 class TypeCar(models.Model):

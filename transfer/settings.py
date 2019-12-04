@@ -25,7 +25,7 @@ SECRET_KEY = 'wm9wn_s_dzp4(b5dyx=^1sul)nmw1-2op4c+bukff)sved)nl$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bladasprof.pythonanywhere.com']
+# ALLOWED_HOSTS = ['bladasprof.pythonanywhere.com']
 
 
 # Application definition

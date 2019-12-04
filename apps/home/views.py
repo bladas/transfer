@@ -86,8 +86,17 @@ class HomeView(FormView):
 
 
         if (request.session['start'] != None and request.session['kuda'] != None and request.session['type_car'] != None):
-            price_filter = OrderCalculates.objects.filter(start =Start.objects.filter(name = start_form.data.get('start')),kuda = Space.objects.filter(name = start_form.data.get('kuda'),start = start),type_car = TypeCar.objects.filter(name = start_form.data.get('type_car')))
-            request.session['suma'] = price_filter
+
+            print("rez")
+            filt_start = Start.objects.filter(name=str(request.session['start']))[0]
+            filt_kuda = Space.objects.filter(name=str(request.session['kuda']))[0]
+            filt_type_car = TypeCar.objects.filter(name=str(request.session['type_car']))[0]
+
+
+            price_filter = OrderCalculates.objects.get(start_id=filt_start.id, kuda_id=filt_kuda.id, type_car_id=filt_type_car.id)
+
+            # price_filter = OrderCalculates.objects.filter(start =Start.objects.filter(name = start_form.data.get('start'))[0],kuda = Space.objects.filter(name = start_form.data.get('kuda'),start = Start.objects.filter(name = start_form.data.get('start'))[0])[0],type_car = TypeCar.objects.filter(name = start_form.data.get('type_car')))[0]
+            request.session['suma'] = price_filter.price
             context['suma'] = request.session['suma']
 
             request.session['start'] = None
