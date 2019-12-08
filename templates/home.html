@@ -35,8 +35,8 @@
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-vk"></i></a></li>
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-instagram"></i></a></li>
 
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fab fa-viber"></i></a></li>
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="viber://chat?number=+34603247607"><i style="color:white;" class="fab fa-viber"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="whatsapp://send?phone=+34603247607"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
 
 				</ul>
 
@@ -48,7 +48,7 @@
                         <div class="row">
                             <ul class="info">
                                 <li><i style="color:white;" class="icon-info-blocks material-icons">question_answer</i><span>site@gmail.com</span></li>
-                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(012) 345 6789</span></li>
+                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(34) 603 247 607</span></li>
                             </ul>
 						<div class="clr"></div>
 					</div>
@@ -138,7 +138,7 @@
                 {% if start == None %}
                     <div class="col-md-3"></div>
                 <div class="col-md-6">
-                <div class="text-center">Выберите начало трансфера</div>
+                <div class="text-center">Выберите пункт отправления</div>
                     <form action="" method="post">
                         {% csrf_token %}
                         <div class="col-md-12">
@@ -157,7 +157,7 @@
                 {% if start != None  and kuda == None%}
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <div class="text-center">Выберите куда будете ехать</div>
+                        <div class="text-center">Выберите пункт назначения</div>
 
                         <form action="" method="post">
                             {% csrf_token %}
@@ -176,7 +176,7 @@
                  {% if start != None and kuda != None %}
                 <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <div class="text-center">Выберите тип транспорта</div>
+                        <div class="text-center">Укажите количество пассажиров</div>
 
                         <form action="" method="post">
                             {% csrf_token %}
@@ -194,8 +194,10 @@
                 {% else %}
                 <div class="col-md-12">
                     <div class="text-center"><h2>Cтоимость трансфера:  {{ suma }} </h2></div>
-                    <div class="text-center"><p>*Стоимость трансфера не окончательная, она зависит от множества факторов </p></div>
-
+                    <div class="text-center"><p>*Окончательная стоимость поездки зависит от ряда индивидуальных параметров (количество багажа, время рейса, дополнительных услуг) и будет сообщена вам при подтверждении заказа. </p></div>
+                    <div class="text-center">
+                        <a href="{%url 'orders:orders' %}"><button class="btn btn-warning">Заказать</button></a>
+                    </div>
                 </div>
 
             {% endif %}

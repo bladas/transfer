@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.generic import ListView, FormView
-from .models import Calculate, Start, Space, TypeCar,OrderCalculates
+from .models import Calculate, Start, Space, TypeCar, OrderCalculates
 from .forms import HomeForms, StartForms, KudaForms, TypeCarForms
 
 
@@ -11,13 +11,20 @@ class HomeView(FormView):
     def get_queryset(self):
         return
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self,**kwargs):
+        print('suka da')
         context = super().get_context_data(**kwargs)
+        self.request.session['start'] = None
+        self.request.session['kuda'] = None
+        self.request.session['type_car'] = None
+        self.request.session['suma'] = None
+
         context['starts'] = Start.objects.all()
         context['type_car_forms'] = TypeCarForms
         context['start_forms'] = StartForms
-        start_first_el  = Start.objects.all().order_by('-id')[0]
-        context['kuda_forms'] = KudaForms(start = int(start_first_el.id))
+        start_first_el = Start.objects.all().order_by('-id')[0]
+        context['kuda_forms'] = KudaForms(start=int(start_first_el.id))
+
         return context
 
     def post(self, request, *args, **kwargs):
@@ -50,9 +57,9 @@ class HomeView(FormView):
 
         start_form = StartForms(request.POST)
         type_car_form = TypeCarForms(request.POST)
-        start_first_el  = Start.objects.all().order_by('-id')[0]
+        start_first_el = Start.objects.all().order_by('-id')[0]
 
-        kuda_forms = KudaForms(data=request.POST,start =int(start_first_el.id))
+        kuda_forms = KudaForms(data=request.POST, start=int(start_first_el.id))
 
         if start_form.data.get('start') != None:
             if start is None:
@@ -72,30 +79,24 @@ class HomeView(FormView):
                 type_car = TypeCar.objects.get(pk=start_form.data.get('type_car'))
                 request.session['type_car'] = type_car.name
 
-
-
         context['start_forms'] = StartForms()
         context['kuda_forms'] = KudaForms(start=start_form.data.get('start'))
         context['type_car_forms'] = TypeCarForms()
-
 
         context['start'] = request.session['start']
         context['kuda'] = request.session['kuda']
         context['type_car'] = request.session['type_car']
 
-
-
-        if (request.session['start'] != None and request.session['kuda'] != None and request.session['type_car'] != None):
-
+        if (request.session['start'] != None and request.session['kuda'] != None and request.session[
+            'type_car'] != None):
             print("rez")
             filt_start = Start.objects.filter(name=str(request.session['start']))[0]
-            filt_kuda = Space.objects.filter(name=str(request.session['kuda']))[0]
+            filt_kuda = Space.objects.filter(name=str(request.session['kuda']),start=filt_start)[0]
             filt_type_car = TypeCar.objects.filter(name=str(request.session['type_car']))[0]
 
+            price_filter = OrderCalculates.objects.get(start_id=filt_start.id, kuda_id=filt_kuda.id,
+                                                       type_car_id=filt_type_car.id)
 
-            price_filter = OrderCalculates.objects.get(start_id=filt_start.id, kuda_id=filt_kuda.id, type_car_id=filt_type_car.id)
-
-            # price_filter = OrderCalculates.objects.filter(start =Start.objects.filter(name = start_form.data.get('start'))[0],kuda = Space.objects.filter(name = start_form.data.get('kuda'),start = Start.objects.filter(name = start_form.data.get('start'))[0])[0],type_car = TypeCar.objects.filter(name = start_form.data.get('type_car')))[0]
             request.session['suma'] = price_filter.price
             context['suma'] = request.session['suma']
 
@@ -104,25 +105,7 @@ class HomeView(FormView):
             request.session['type_car'] = None
 
             request.session['suma'] = None
-
+            del request.session['start']
+            del request.session['kuda']
+            del request.session['type_car']
         return render(request, 'home.html', context)
-
-        # calculate_form = HomeForms(request.POST)
-        #
-        # if calculate_form.is_valid():
-        #
-        #     print(calculate_form.data.get('start'))
-        #     print(calculate_form.data.get('kuda'))
-        #     print(calculate_form.data.get('type_car'))
-        #     if calculate_form.data.get('start') != '1':
-        #         # err = calculate_form.errors['Выберите Аеропорт']
-        #         # print(calculate_form.error_message)
-        #         context = super().get_context_data(**kwargs)
-        #         context['calculator'] = Calculate.objects.filter(start=calculate_form.data.get('start'), kuda=calculate_form.data.get('kuda'),
-        #                                  type_car=calculate_form.data.get('type_car'))
-        #         # context['err'] = err
-        #
-        #         return render(request,'home.html',context)
-        # else:
-        #     print(calculate_form.errors)
-        # print("0")

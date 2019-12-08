@@ -33,8 +33,8 @@
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-vk"></i></a></li>
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-instagram"></i></a></li>
 
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fab fa-viber"></i></a></li>
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="viber://chat?number=+34603247607"><i style="color:white;" class="fab fa-viber"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="whatsapp://send?phone=+34603247607"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
 
 				</ul>
 
@@ -46,7 +46,7 @@
                         <div class="row">
                             <ul class="info">
                                 <li><i style="color:white;" class="icon-info-blocks material-icons">question_answer</i><span>site@gmail.com</span></li>
-                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(012) 345 6789</span></li>
+                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(34) 603 247 607</span></li>
                             </ul>
 						<div class="clr"></div>
 					</div>
@@ -109,16 +109,18 @@
                         <div class="col-md-12" >
                             <div class="myborder">
                                 <div class="col-md-8" style="margin-top: 20px;">
-                                    <p><strong>Имя: </strong>{{ object.name }}</p>
-                                    <p><strong>Фамилия: </strong>{{ object.lastname }}</p>
+                                    <p><strong>Имя Фамилия: </strong>{{ object.name }}</p>
+
                                     <p><strong>Пункт отправления: </strong>{{ object.otkuda }}</p>
                                     <p><strong>Пункт назначения: </strong>{{ object.kuda }}</p>
                                     <p><strong>Дата поездки: </strong>{{ object.data }}</p>
                                     <p><strong>Времья подачи авто: </strong>{{ object.hours }}</p>
                                     <p><strong>Количество пасажиров: </strong>{{ object.kolichestvo }}</p>
-                                    <p><strong>С них детей и их возраст: </strong>{{ object.detey }}</p>
+                                    <p><strong>Количество детей: </strong>{{ object.deteydescr }}</p>
+                                    <p><strong>Возраст детей: </strong>{{ object.deteydescr }}</p>
                                     <p><strong>Контактный телефон: </strong>{{ object.phone }}</p>
                                     <p> <strong>Электронная почта: </strong>{{ object.email }}</p>
+                                     <p> <strong>Описание трансфера: </strong>{{ object.description }}</p>
                                 </div>
 
                                 <div class="col-md-1" style="padding-top: 80px;">
@@ -151,16 +153,17 @@
                         <div class="col-md-12" >
                             <div class="myborder" >
 
-                                    <p><strong>Имя: </strong>{{ object.name }}</p>
-                                    <p><strong>Фамилия: </strong>{{ object.lastname }}</p>
+                                    <p><strong>Имя Фамилия: </strong>{{ object.name }}</p>
+
                                     <p><strong>Пункт отправления: </strong>{{ object.otkuda }}</p>
                                     <p><strong>Пункт назначения: </strong>{{ object.kuda }}</p>
-                                    <p><strong>Дата поездки: </strong>{{ object.data }}</p>
-                                    <p><strong>Времья подачи авто: </strong>{{ object.hours }}</p>
+                                    <p><strong>Дата и времья подачи авто: </strong>{{ object.data }}</p>
                                     <p><strong>Количество пасажиров: </strong>{{ object.kolichestvo }}</p>
-                                    <p><strong>С них детей и их возраст: </strong>{{ object.detey }}</p>
+                                    <p><strong>С них детей: </strong>{{ object.detey }}</p>
+                                    <p><strong>Возраст детей: </strong>{{ object.deteydescr }}</p>
                                     <p><strong>Контактный телефон: </strong>{{ object.phone }}</p>
                                     <p> <strong>Электронная почта: </strong>{{ object.email }}</p>
+                                    <p> <strong>Описание трансфера: </strong>{{ object.description }}</p>
                                     {% if object.flag != None %}
                                         <p> <strong>{{ object.flag }}</strong></p>
                                     {% endif %}

@@ -81,7 +81,7 @@ class Order(models.Model):
     otkuda = models.ForeignKey(Start,blank=True,on_delete=models.CASCADE,null=True)
     kuda = models.ForeignKey(Finish,blank=True ,on_delete=models.CASCADE,null=True)
     lastname = models.CharField(max_length=50,null=True,blank=True)
-    data = models.DateField()
+    data = models.CharField(max_length=200)
     hours = models.CharField(choices=HOUR_Choices,blank=True, null=True,max_length=3)
     minutes = models.CharField(choices=MINUTE_Choices,blank=True, null=True,max_length=3)
     kolichestvo = models.ForeignKey(Kolichestvo,blank=True,on_delete=models.CASCADE, null=True)

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wm9wn_s_dzp4(b5dyx=^1sul)nmw1-2op4c+bukff)sved)nl$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['bladasprof.pythonanywhere.com']
+ALLOWED_HOSTS = ['bladasprof.pythonanywhere.com']
 
 
 # Application definition

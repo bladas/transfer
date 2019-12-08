@@ -7,21 +7,19 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ('name', 'lastname', 'phone', 'otkuda', 'kuda',
+        fields = ('name', 'phone', 'otkuda', 'kuda',
                   'kolichestvo',
-                  'data', 'description', 'email','hours','minutes','detey','deteydescr')
+                  'data', 'description', 'email','detey','deteydescr')
 
     def save(self, commit=True):
         new_order = Order.objects.create(
             name=self.cleaned_data['name'],
-            lastname=self.cleaned_data['lastname'],
             phone=self.cleaned_data['phone'],
             otkuda=self.cleaned_data['otkuda'],
             kuda=self.cleaned_data['kuda'],
             kolichestvo=self.cleaned_data['kolichestvo'],
             data=self.cleaned_data['data'],
-            hours=self.cleaned_data['hours'],
-            minutes=self.cleaned_data['minutes'],
+
             description=self.cleaned_data['description'],
             email=self.cleaned_data['email'],
             detey=self.cleaned_data['detey'],

@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<title>Заказ трансфера</title>
+<title>Заказ Трансфера</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- css -->
@@ -14,6 +14,16 @@
 <link href="/static/css/fancybox/jquery.fancybox.css" rel="stylesheet">
 <link href="/static/css/flexslider.css" rel="stylesheet" />
 <link href="/static/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.4/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/v4-shims.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+          <!-- XDSoft DateTimePicker -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -33,8 +43,8 @@
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-vk"></i></a></li>
 					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-instagram"></i></a></li>
 
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fab fa-viber"></i></a></li>
-					<li><a class="waves-effect waves-dark" href="#"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="viber://chat?number=+34603247607"><i style="color:white;" class="fab fa-viber"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="whatsapp://send?phone=+34603247607"><i style="color:white;" class="fa fa-whatsapp"></i></a></li>
 
 				</ul>
 
@@ -46,7 +56,7 @@
                         <div class="row">
                             <ul class="info">
                                 <li><i style="color:white;" class="icon-info-blocks material-icons">question_answer</i><span>site@gmail.com</span></li>
-                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(012) 345 6789</span></li>
+                                <li><i style="color:white;" class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(34) 603 247 607</span></li>
                             </ul>
 						<div class="clr"></div>
 					</div>
@@ -92,16 +102,22 @@
             </div>
         </div>
 	</header>
-	<section id="content">
-<section id="pricing">
-    <div class="container">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 borders" style="padding-top: 40px;padding-bottom: 40px;">
-        <form method="POST" class="post-form">
 
-                    {% csrf_token %}
 
-                        <div class="wrap-input100 validate-input col-md-8" data-validate="" >
+
+
+
+    <section id="content">
+        <section id="pricing">
+            <div class="container">
+                <div class="col-md-2"></div>
+                    <div class="col-md-8 borders" style="padding-top: 40px;padding-bottom: 40px;">
+
+                    <form method="POST" class="post-form" >
+
+                        {% csrf_token %}
+
+                        <div class="wrap-input100 col-md-8" data-validate="" >
                                  <p><strong>Пункт отправления</strong></p>
                                      <div class="form-group">
                                     {% render_field form.otkuda|add_class:'form-control'   %}
@@ -113,50 +129,36 @@
 
 
 
-{#                            {% if form.hours.errors %}#}
-{#                                <p style="color: red">Введите время в формате ЧЧ:ММ</p>#}
-{#                            {% endif %}#}
-                                <div class="col-md-12">
 
-                                    <div class="form-group col-md-6" >
-                                         <p><strong>Дата поездки</strong></p>
-                                        {% render_field  form.data|add_class:'form-control' type="date"%}
-                                    </div>
-                                    <div class="form-group col-md-3">
-
-                                        <p><strong>Часы</strong></p>
-                                    {% render_field  form.hours|add_class:'form-control'%}
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <p><strong>Минуты</strong></p>
-                                    {% render_field  form.minutes|add_class:'form-control'%}
+                                 <div class="form-group" >
+                                         <p><strong>Дата и время поездки</strong></p>
+                                        {% render_field  form.data|add_class:'datetimepicker' type="text" data-type="date" autocomplete="off"  %}
                                     </div>
 
-                                </div>
+
 
                                 <div class="col-md-12">
 
                                     <div class="form-group col-md-5">
-                                <p><strong>Количество пасажиров</strong></p>
+                                        <p><strong>Количество пассажиров</strong></p>
 
-                                    {% render_field form.kolichestvo|add_class:'form-control'%}
-                                    </div>
+                                            {% render_field form.kolichestvo|add_class:'form-control'%}
+                                            </div>
 
 
-                                <div class="form-group col-md-3">
-                                     <p><strong>С них детей </strong></p>
-                                    {% render_field form.detey|add_class:'form-control'%}
-                                </div>
-                                <div class="form-group col-md-4">
-                                     <p><strong>Возраст <br> детей</strong></p>
-                                    {% render_field form.deteydescr|add_class:'form-control'%}
-                                </div>
+                                        <div class="form-group col-md-3">
+                                             <p><strong>Из них детей </strong></p>
+                                            {% render_field form.detey|add_class:'form-control'%}
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                             <p><strong>Возраст <br> детей</strong></p>
+                                            {% render_field form.deteydescr|add_class:'form-control'%}
+                                        </div>
                                 </div>
                                 <p><strong class="text-center">Имя Фамилия</strong></p>
                                     {% render_field form.name|add_class:'form-control input-lg'  %}
 
-{#                                <p><strong class="text-center">Фамилия </strong></p>#}
-{#                                    {% render_field form.lastname|add_class:'form-control input-lg'  %}#}
+
 
 
 
@@ -169,123 +171,118 @@
 
 
 
-                                 <p><strong>Адресс электронной почты</strong></p>
+                                 <p><strong>Адрес электронной почты</strong></p>
                                  {% render_field form.email|add_class:'form-control input-lg'   %}
 
 
                                  <p><strong>Дополнительная информация</strong></p>
                                  {% render_field form.description|add_class:'text-area'  %}
-                                    <p>Укажите пожалуйста номер вашего рейса , точный адрес отеля, дома, апартаментов, агенства недвижимости или иную информацию</p>
+                                    <p>Укажите, пожалуйста, номер Вашего рейса; точный адрес отеля, апартаментов или агенства недвижимости; иные Ваши пожелания</p>
 
 
 
-                        <div class="col-md-12 text-center ">
-                            <button type="submit" class="btn btn-warning">Заказать</button>
-                        </div>
+                                <div class="col-md-12 text-center ">
+                                    <button type="submit" class="btn btn-warning">Заказать</button>
+                                </div>
                         </div>
                 </form>
             </div>
-        <div class="col-md-2"> </div>
             </div>
-
+        </section>
     </section>
-	</section>
+
 <footer class="our_footer">
 
 
-            <div id="sub-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="widget">
-                            <div class="col-md-12">
-                                <div class="col-md-4">
-                                     <div class="col-md-6">
-                                        <address>
-                                        <strong>Name company</strong><br>
-                                        Address
-                                        </address>
-                                     </div>
-                                    <div class="col-md-6">
-                                        <p>
-                                            <i class="icon-phone"></i> +(349) 999 99 99 <br>
-                                            <i class="icon-envelope-alt"></i> admin@site.com
-                                         </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-
-                                    <div class="col-md-2">
-                                        <ul class="link-list">
-                                        <li><a class="waves-effect waves-dark" href="{% url 'home:home' %}">Главная</a></li>
-                                            </ul>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <ul class="link-list">
-                                        <li><a class="waves-effect waves-dark" href="{% url 'excursion:excursion' %}">Экскурсии</a></li>
-                                            </ul>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <ul class="link-list">
-                                        <li ><a class="waves-effect waves-dark" href="{% url 'orders:orders' %}">Сделать Заказ</a></li>
-                                            </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <ul class="link-list">
-                                        <li ><a class="waves-effect waves-dark" href="{% url 'services:services' %}">Дополнительные услуги</a></li>
-                                            </ul>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <ul class="link-list">
-                                        <li ><a class="waves-effect waves-dark" href="{% url 'pricing:pricing' %}">Цены</a></li>
-                                            </ul>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <ul class="link-list">
-                                        <li ><a class="waves-effect waves-dark" href="{% url 'contact:contact' %}">Контакты</a></li>
-                                            </ul>
-                                    </div>
-
-
-
-
-                                </div>
-
-                        </div>
-                        </div>
-                        <div class="col-lg-9"></div>
-                        <div class="col-lg-3">
-                            <div class="copyright">
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+                <div class="widget">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                             <div class="col-md-6">
+                                <address>
+                                <strong>Name company</strong><br>
+                                Address
+                                </address>
+                             </div>
+                            <div class="col-md-6">
                                 <p>
-                                    <span>&copy; company name 2019 All right reserved</span>
-                                </p>
+                                    <i class="icon-phone"></i> +(349) 999 99 99 <br>
+                                    <i class="icon-envelope-alt"></i> admin@site.com
+                                 </p>
                             </div>
                         </div>
 
-                    </div>
+                        <div class="col-md-8">
+
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li><a class="waves-effect waves-dark" href="{% url 'home:home' %}">Главная</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li><a class="waves-effect waves-dark" href="{% url 'excursion:excursion' %}">Экскурсии</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'orders:orders' %}">Сделать Заказ</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'services:services' %}">Дополнительные услуги</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-1">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'pricing:pricing' %}">Цены</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-md-1">
+                                <ul class="link-list">
+                                <li ><a class="waves-effect waves-dark" href="{% url 'contact:contact' %}">Контакты</a></li>
+                                    </ul>
+                            </div>
+
+
+
+
+                        </div>
+
                 </div>
-            </div>
-	    </footer>
-</div>
+				</div>
+                <div class="col-lg-9"></div>
+				<div class="col-lg-3">
+					<div class="copyright">
+						<p>
+							<span>&copy; company name 2019 All right reserved</span>
+						</p>
+					</div>
+				</div>
 
+			</div>
+		</div>
+	</div>
+	</footer>
+  </div>
 <a href="#" class="scrollup waves-effect waves-dark"><i class="fa fa-angle-up active"></i></a>
-</body>
-<script src="/static/js/jquery.js"></script>
+    <script>
+    $(function () {
+      $(".datetimepicker").datetimepicker();
+    });
+  </script>
 
-<script src="/static/js/jquery.easing.1.3.js"></script>
-<script src="/static/materialize/js/materialize.min.js"></script>
+
+
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/jquery.fancybox.pack.js"></script>
 <script src="/static/js/jquery.fancybox-media.js"></script>
 <script src="/static/js/jquery.flexslider.js"></script>
-<script src="/static/js/animate.js"></script>
-<!-- Vendor Scripts -->
-<script src="/static/js/modernizr.custom.js"></script>
-<script src="/static/js/jquery.isotope.min.js"></script>
-<script src="/static/js/jquery.magnific-popup.min.js"></script>
-<script src="/static/js/animate.js"></script>
-<script src="/static/js/custom.js"></script>
 
-        <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/v4-shims.js"></script>
+
+  </body>
 </html>
+
